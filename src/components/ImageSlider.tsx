@@ -6,7 +6,14 @@ import productImage2 from "@/../public/images/image-product-2.jpg";
 import productImage3 from "@/../public/images/image-product-3.jpg";
 import productImage4 from "@/../public/images/image-product-4.jpg";
 import { ChevronLeft, ChevronRight, X } from "lucide-react";
-
+import { motion } from "framer-motion";
+const imageVariant = {
+  hidden: { opacity: 0, x: -50 },
+  show: {
+    opacity: 1,
+    x: 0,
+  },
+};
 export default function ImageSlider() {
   const images = [
     { id: 1, image: productImage1, name: "Image One" },
@@ -27,7 +34,12 @@ export default function ImageSlider() {
   };
 
   return (
-    <section className="flex flex-col justify-center items-center">
+    <motion.section
+      initial="hidden"
+      animate="show"
+      variants={imageVariant}
+      className="flex flex-col justify-center items-center"
+    >
       <div>
         <Image
           src={images[currentIndex].image}
@@ -91,6 +103,6 @@ export default function ImageSlider() {
           </button>
         </div>
       )}
-    </section>
+    </motion.section>
   );
 }
