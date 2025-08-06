@@ -8,6 +8,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "@/store/index";
 import productImage1 from "@/../public/images/image-product-1.jpg";
 import { removeFromCart } from "@/store/counterSlice";
+import { motion } from "framer-motion";
 
 export default function Navbar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -22,6 +23,13 @@ export default function Navbar() {
     { id: 4, title: "About" },
     { id: 5, title: "Contact" },
   ];
+  const navVariant = {
+    hidden: { opacity: 0, y: -50 },
+    show: {
+      opacity: 1,
+      y: 0,
+    },
+  };
   const handleNavClick = (title: string) => {
     const element = document.querySelector(title);
     if (element) {
@@ -37,7 +45,12 @@ export default function Navbar() {
   }));
 
   return (
-    <nav className="absolute border-b-2 font-poppins top-0 left-0 right-0 flex md:justify-around justify-between px-5 md:px-0 items-center py-9 z-20">
+    <motion.nav
+      initial="hidden"
+      animate="show"
+      variants={navVariant}
+      className="absolute border-b-2 font-poppins top-0 left-0 right-0 flex md:justify-around justify-between px-5 md:px-0 items-center py-9 z-20"
+    >
       {" "}
       <div className="flex gap-4 items-center text-white">
         <button
@@ -131,6 +144,6 @@ export default function Navbar() {
           </div>
         )}
       </div>
-    </nav>
+    </motion.nav>
   );
 }
