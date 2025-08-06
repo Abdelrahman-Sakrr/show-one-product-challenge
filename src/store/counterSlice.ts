@@ -9,10 +9,15 @@ const counterSlice = createSlice({
   initialState,
   reducers: {
     increment: (state) => {
-      state.value += 1; 
+      state.value += 1;
     },
     addToCart: (state, action) => {
       state.value += action.payload;
+    },
+    removeFromCart: (state) => {
+      if (state.value > 0) {
+        state.value -= 1;
+      }
     },
     decrement: (state) => {
       if (state.value > 1) state.value -= 1;
@@ -23,5 +28,6 @@ const counterSlice = createSlice({
   },
 });
 
-export const { increment, decrement, reset, addToCart } = counterSlice.actions;
+export const { increment, decrement, reset, addToCart, removeFromCart } =
+  counterSlice.actions;
 export default counterSlice.reducer;
