@@ -5,7 +5,7 @@ import logo from "@/../public/images/logo.svg";
 import avatar from "@/../public/images/image-avatar.png";
 import { Menu, ShoppingCart, X } from "lucide-react";
 import { useSelector } from "react-redux";
-import { RootState } from "@/store/Index";
+import { RootState } from "@/store/index";
 
 export default function Navbar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
